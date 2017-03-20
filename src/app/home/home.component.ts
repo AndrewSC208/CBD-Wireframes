@@ -47,12 +47,14 @@ export class HomeComponent implements AfterViewInit {
       });
     });
     this._loadingService.register('products.load');
+
     this._productsService.query().subscribe((products: Object[]) => {
       this.products = products;
       setTimeout(() => {
         this._loadingService.resolve('products.load');
       }, 2000);
     });
+    
     this._loadingService.register('users.load');
     this._usersService.query().subscribe((users: Object[]) => {
       this.users = users;
